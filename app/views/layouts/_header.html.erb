@@ -2,29 +2,42 @@
   <div class="conrainer" >
     <%= link_to("Q", "/",id: "logo") %>
   </div>
-  <%#= ログイン時 
-  <ul class="nav navbar-nav navbar-right">
-    <li>
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-        <% @current_user.name =>
-      	<span class="caret"></span>
-      	</button>
-      	<ul class="dropdown-menu" role="menu">
-      	  <li role="presentation"><a href="#">マイページ</a></li>
-      	  <li role="presentation"><a href="#">アカウント設定（問題作成）</a></li>
-          <li role="presentation"><a href="#">ログアウト</a></li>
-        </ul>
-      </div>
-    </li>
-  </ul>
-  %>
-  <%#= ゲスト時 
-            <li>
-        link_to("新規登録", "/signup") 
-      </li>
-      <li>
-         link_to("ログイン", "/login") 
-      </li>
-  %>
+  <% if @current_user %> 
+          <ul class="header-menus">
+        <% if @current_user %>
+          <li>
+            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+          </li>
+          <li>
+            <%= link_to("投稿一覧", "/posts/index") %>
+          </li>
+          <li>
+            <%= link_to("新規投稿", "/posts/new") %>
+          </li>
+          <li>
+            <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li>
+            <%= link_to("ログアウト", "/logout", {method: :post}) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("TweetAppとは", "/about") %>
+          </li>
+          <li>
+            <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li>
+            <%= link_to("ログイン", "/login") %>
+          </li>
+        <% end %>
+      </ul>
+  <% else %>
+  <li>
+    <%= link_to("新規登録", "/signup") %>
+  </li>
+  <li>
+    <%= link_to("ログイン", "/login") %>
+  </li>
+  <% end %>
 </header>
