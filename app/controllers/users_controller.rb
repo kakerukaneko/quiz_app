@@ -28,8 +28,9 @@ class UsersController < ApplicationController
   end
   
   def login
-    @user = User.find_by(email: params[:email], password_digest: params[:password])
-    if @user
+    @user = User.find_by(email: params[:email])
+    #, password_digest: params[:password]
+    if !!@user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/")
@@ -67,6 +68,7 @@ class UsersController < ApplicationController
       redirect_to("/users/#{@user.id}")
     else
       render("users/edit")
+      flash[:notice] = "保存る？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？"
     end
   end
   
