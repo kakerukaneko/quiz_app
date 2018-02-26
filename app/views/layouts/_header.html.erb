@@ -2,20 +2,17 @@
   <div class="conrainer" >
     <%= link_to("Q", "/",id: "logo") %>
   </div>
+  <ul class="nav navbar-nav navbar-right">
   <% if @current_user %> 
-          <ul class="header-menus">
         <% if @current_user %>
+          <li>
+             <img src="<%= "/user_images/#{@current_user.image_name}" %>" class="prof" width="50" height="50">
+          </li>
           <li>
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
           </li>
           <li>
-            <%= link_to("投稿一覧", "/posts/index") %>
-          </li>
-          <li>
-            <%= link_to("新規投稿", "/posts/new") %>
-          </li>
-          <li>
-            <%= link_to("ユーザー一覧", "/users/index") %>
+            <%= link_to("アカウント設定", "/users/#{@current_user.id}/edit") %>
           </li>
           <li>
             <%= link_to("ログアウト", "/logout", {method: :post}) %>
@@ -31,7 +28,7 @@
             <%= link_to("ログイン", "/login") %>
           </li>
         <% end %>
-      </ul>
+      
   <% else %>
   <li>
     <%= link_to("新規登録", "/signup") %>
@@ -40,4 +37,5 @@
     <%= link_to("ログイン", "/login") %>
   </li>
   <% end %>
+   </ul>
 </header>
