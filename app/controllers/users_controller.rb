@@ -28,8 +28,8 @@ class UsersController < ApplicationController
   end
   
   def login
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: params[:email], password_digest: params[:password])
+    if @user
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
       redirect_to("/")
@@ -61,13 +61,11 @@ class UsersController < ApplicationController
       image = params[:image]
       File.binwrite("public/user_images/#{@user.image_name}", image.read)
     end
-    
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"
       redirect_to("/users/#{@user.id}")
     else
       render("users/edit")
-      flash[:notice] = "保存る？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？？"
     end
   end
   

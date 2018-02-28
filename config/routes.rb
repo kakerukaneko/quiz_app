@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  get 'index' => 'contents#index'
-  get 'contents/create' => 'contents#create'
+  get "index" => "contents#index"
+  get "contents/create" => "contents#create"
+  post "contents/created" => "contents#created"
+  
 
   get "signup" => "users#new"
   post "users/create" => "users#create"
@@ -13,6 +15,6 @@ Rails.application.routes.draw do
   get "users/:id/edit" => "users#edit"
   
   
-  get '/' => 'home#top'
-  get 'about' => 'home#about'
+  get "/" => "home#top"
+  get "about" => "home#about"
 end
