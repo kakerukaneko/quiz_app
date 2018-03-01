@@ -1,2 +1,27 @@
-<h1>Contents#index</h1>
-<p>Find me in app/views/contents/index.html.erb</p>
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">アカウント編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <%= form_tag("/content/answer", {multipart: true}) do %>
+          <% @quiz.each do |qui| %>
+          No<%= @i %>
+          ジャンル<%= @genres[qui.genre_id-1] %>
+          <br /><%= qui.content %>
+          <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+          <p>ユーザー名</p>
+          <input name="name" value="<%= @user.name %>">
+          <p>画像</p>
+          <input name="image" type="file">
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @user.email %>">
+          <input type="submit" value="保存">
+        <% end %>
+        
+          <input type="submit" value="保存">
+          <% end  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
