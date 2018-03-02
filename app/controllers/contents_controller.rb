@@ -5,6 +5,7 @@ class ContentsController < ApplicationController
   def index
     @genre = Genre.all
     @genres = Array.new
+    #ページ共通にしたい
     @i = 1 
     @genre.each do |genre|
       @genres.push(genre.name) 
@@ -12,7 +13,6 @@ class ContentsController < ApplicationController
   end
   
   def answer
-    #aswerにはいってない
     @answer = params[:answer]
     @quiz_id = params[:quiz_id]
     @quiz = Quiz.find_by(id: @quiz_id)
