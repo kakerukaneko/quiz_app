@@ -1,26 +1,20 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">アカウント編集</div>
+    <div class="form-heading">問題</div>
     <div class="form users-form">
       <div class="form-body">
-        <%= form_tag("/content/answer", {multipart: true}) do %>
-          <% @quiz.each do |qui| %>
+        <% @quiz.each do |qui| %>
+        <!-- このクイズ配列はコントローラー側でいけるかも -->
+          <% quiz_Array = [qui.answer1,qui.answer2,qui.answer3,qui.answer4] %>
           No<%= @i %>
           ジャンル<%= @genres[qui.genre_id-1] %>
           <br /><%= qui.content %>
-          <%= form_tag("/contents/create", {multipart: true}) do %>
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @user.name %>">
-          
-          <input type="submit" name="answer2" value="保存">
-          <input type="submit" name="answer2" value="保存">
-          <input type="submit" name="answer3" value="保存">
-          <input type="submit" name="answer4" value="保存">
-          <input type="submit" value="保存">
-        <% end %>
-        
-          <input type="submit" value="保存">
-          <% end  %>
+          <%= form_tag("/contents/answer", {multipart: true}) do %>
+            <input type="hidden" name="quiz_id" value="<%= qui.id %>">
+            <% quiz_Array.shuffle.each do |answer| %>
+              <input type="submit" name="<%= answer %>" value="<%= answer %>">
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </div>

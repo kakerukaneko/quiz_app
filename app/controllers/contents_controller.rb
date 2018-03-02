@@ -11,6 +11,7 @@ class ContentsController < ApplicationController
   end
   
   def answer
+    @answer = params[:answer]
   end
   
   def create
