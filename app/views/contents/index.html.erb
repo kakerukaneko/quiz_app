@@ -8,13 +8,14 @@
           No<%= @i %>
           ジャンル<%= @genres[qui.genre_id-1] %>
           <br /><%= qui.content %>
-          <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+          <%= form_tag("/contents/create", {multipart: true}) do %>
           <p>ユーザー名</p>
           <input name="name" value="<%= @user.name %>">
-          <p>画像</p>
-          <input name="image" type="file">
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
+          
+          <input type="submit" name="answer2" value="保存">
+          <input type="submit" name="answer2" value="保存">
+          <input type="submit" name="answer3" value="保存">
+          <input type="submit" name="answer4" value="保存">
           <input type="submit" value="保存">
         <% end %>
         

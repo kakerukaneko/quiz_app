@@ -36,7 +36,7 @@ class ContentsController < ApplicationController
   
   def set_question
     if session[:user_id]
-      @quiz = Quiz.order("RANDOM()").limit(1)
+      @quiz = Quiz.all.order("RANDOM()").limit(1)
     #else
      # @quiz = Quiz.order("RANDOM()").limit(1)
     end
