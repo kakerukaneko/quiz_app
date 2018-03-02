@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_question
-  #before_action :answer,{only:[:index]}
+  before_action :set_test,{only:[:kekka,:answer]}
   
   def index
     @genre = Genre.all
@@ -18,13 +18,19 @@ class ContentsController < ApplicationController
     @quiz = Quiz.find_by(id: @quiz_id)
     if @quiz.answer1 == @answer
       flash[:notice] = "正解です"
-      session[:kekka] = "yattane"
+      if @test
+        @test.push('test2')
+      else
+        @test = Array['test1']
+      end
       redirect_to("/index")
     else
       flash[:notice] = "不正解です"
-      session[:kekka] = nil
       redirect_to("/index")
     end
+  end
+  
+  def kekka
   end
   
   def create
@@ -54,6 +60,10 @@ class ContentsController < ApplicationController
     #else
      # @quiz = Quiz.order("RANDOM()").limit(1)
     end
+  end
+  
+  def set_test
+    @test
   end
   
   private
