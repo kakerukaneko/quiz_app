@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   get "index" => "contents#index"
-  post "answer" => "contents#answer"
+  post "contents/answer" => "contents#answer"
   get "contents/create" => "contents#create"
   post "contents/created" => "contents#created"
   

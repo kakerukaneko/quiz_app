@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_action :set_question
+  #before_action :answer,{only:[:index]}
   
   def index
     @genre = Genre.all
@@ -11,7 +12,19 @@ class ContentsController < ApplicationController
   end
   
   def answer
+    #aswerにはいってない
     @answer = params[:answer]
+    @quiz_id = params[:quiz_id]
+    @quiz = Quiz.find_by(id: @quiz_id)
+    if @quiz.answer1 == @answer
+      flash[:notice] = "正解です"
+      session[:kekka] = "yattane"
+      redirect_to("/index")
+    else
+      flash[:notice] = "不正解です"
+      session[:kekka] = nil
+      redirect_to("/index")
+    end
   end
   
   def create
