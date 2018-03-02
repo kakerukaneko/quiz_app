@@ -9,7 +9,7 @@
           No<%= @i %>
           ジャンル<%= @genres[qui.genre_id-1] %>
           <br /><%= qui.content %>
-          <%= form_tag("/contents/answer", {multipart: true}) do %>
+          <%= form_tag("/contents/answer", method: :get) do %>
             <input type="hidden" name="quiz_id" value="<%= qui.id %>">
             <% quiz_Array.shuffle.each do |answer| %>
               <input type="submit" name="answer" value="<%= answer %>">

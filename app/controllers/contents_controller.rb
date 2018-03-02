@@ -1,15 +1,8 @@
 class ContentsController < ApplicationController
   before_action :set_question
-  before_action :set_test,{only:[:kekka,:answer]}
+  before_action :set_genres
   
   def index
-    @genre = Genre.all
-    @genres = Array.new
-    #ページ共通にしたい
-    @i = 1 
-    @genre.each do |genre|
-      @genres.push(genre.name) 
-    end
   end
   
   def answer
@@ -18,16 +11,10 @@ class ContentsController < ApplicationController
     @quiz = Quiz.find_by(id: @quiz_id)
     if @quiz.answer1 == @answer
       flash[:notice] = "正解です"
-      if @test
-        @test.push('test2')
-      else
-        @test = Array['test1']
-      end
-      redirect_to("/index")
     else
       flash[:notice] = "不正解です"
-      redirect_to("/index")
     end
+    @quiz_comment = @quiz.quiz_comment
   end
   
   def kekka
@@ -62,8 +49,13 @@ class ContentsController < ApplicationController
     end
   end
   
-  def set_test
-    @test
+  def set_genres
+    @genre = Genre.all
+    @genres = Array.new
+    @i = 1 
+    @genre.each do |genre|
+      @genres.push(genre.name) 
+    end
   end
   
   private
@@ -71,4 +63,5 @@ class ContentsController < ApplicationController
       params.require(:quiz).permit(:content, :content_picture, :answer1,:answer2,:answer3,:answer4,
                                    :genre_id,:quiz_comment,:quiz_addId)
     end
+    
 end
