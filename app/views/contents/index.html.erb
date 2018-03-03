@@ -4,6 +4,7 @@
     <div class="form users-form">
       <div class="form-body">
           ジャンル<%= @genres[@quiz.genre_id-1] %>
+          No <%= @count %>
           <br /><%= @quiz.content %>
           <%= form_tag("/contents/answer", method: :get) do %>
             <input type="hidden" name="quiz_id" value="<%= @quiz.id %>">

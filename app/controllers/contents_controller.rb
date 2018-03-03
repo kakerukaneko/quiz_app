@@ -3,7 +3,6 @@ class ContentsController < ApplicationController
   before_action :set_genres
   
   def index
-    #@quiz = Quiz.all
     if !session[:quiz_id]
       #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
       session[:quiz_id] = rand(100) + 1
@@ -11,7 +10,6 @@ class ContentsController < ApplicationController
   end
   
   def answer
-    @quiz_id = session[:quiz_id]
     @user_answer = params[:answer]
     @quiz_id = params[:quiz_id]
     @quiz_key = session[:quiz_id]
@@ -27,9 +25,21 @@ class ContentsController < ApplicationController
       flash[:notice] = "不正解です"
     end
     @quiz_comment = @quiz.quiz_comment
+    @result_count = Result.where(quiz_key: @quiz_key).count
   end
   
   def kekka
+    @result_Array = Array.new
+    @quiz_key = session[:quiz_id]
+    @results = Result.where(quiz_key: @quiz_key)
+    @quiz = Quiz.all
+    @i = 0
+    @results.each do |result|
+      @result_Array.push(result) 
+    end
+    #結果の表示が終わったらクイズキー セッション共に破棄する
+    @results.delete_all
+    session[:quiz_id] = nil
   end
   
   def create
@@ -57,7 +67,7 @@ class ContentsController < ApplicationController
     #IDを無作為に抽出
     @id = Quiz.pluck(:id).sample
     @result = Result.all
-    @count = 1
+    @quiz_key = session[:quiz_id]
     #問題ID振り分け 重複していたらcountを引いて 重複していないかつカウントが問題数と同じならbreak
     #@result.each do |result|
      # if result.quiz_id == @id
@@ -71,6 +81,7 @@ class ContentsController < ApplicationController
     #end
     #@quiz = Quiz.all.order("RANDOM()").limit(1)
     @quiz = Quiz.find_by(id: @id)
+    @count = @result.where(quiz_key: @quiz_key).count+1
     @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
   

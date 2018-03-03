@@ -1,1 +1,28 @@
-<%= @test[0] %>
+<div class="main users-edit">
+  <div class="container">
+    <div class="form-heading">問題</div>
+    <div class="form users-form">
+      <div class="form-body">
+      <table border=1>
+       <tr><th> ジャンル </th><th> 番号 </th><th> 問題 </th><th> 答え </th><th> 解答 </th><th> 結果 </th></tr>
+       <% @result_Array.each do |result| %>
+           <% @i += 1 %>
+           <% quiz = Quiz.find_by(id: result.quiz_id) %>
+    		<tr>
+        		<td align=\"center\"><%= @genres[quiz.genre_id-1] %></td>
+        		<td><%= @i %></td>
+        		<td><%= quiz.content %></td>
+        		<td><%= quiz.answer1 %></td>
+        		<td><%= result.user_answer %></td>
+        		<% if quiz.answer1 ==  result.user_answer %>
+        		<td>○</td>
+        		<% else %>
+        		<td>×</td>
+        		<% end %>
+    	  </tr>
+    	<% end %>
+	    <table>
+      </div>
+    </div>
+  </div>
+</div>

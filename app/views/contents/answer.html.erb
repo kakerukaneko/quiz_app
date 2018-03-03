@@ -4,7 +4,11 @@
     <div class="form users-form">
       <div class="form-body">
         <%=  @quiz_comment %>
+        <% if @result_count >= 10  && session[:user_id] || @result_count >= 5 && !session[:user_id]  %>
+        <%= link_to("結果発表へ", "/contents/kekka") %>
+        <% else %>
         <%= link_to("次の問題へ", "/index") %>
+        <% end %>
       </div>
     </div>
   </div>
