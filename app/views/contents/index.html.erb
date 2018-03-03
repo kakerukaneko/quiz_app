@@ -5,13 +5,12 @@
       <div class="form-body">
         <% @quiz.each do |qui| %>
         <!-- このクイズ配列はコントローラー側でいけるかも -->
-          <% quiz_Array = [qui.answer1,qui.answer2,qui.answer3,qui.answer4] %>
-          No<%= @i %>
+          No<%= %>
           ジャンル<%= @genres[qui.genre_id-1] %>
           <br /><%= qui.content %>
           <%= form_tag("/contents/answer", method: :get) do %>
             <input type="hidden" name="quiz_id" value="<%= qui.id %>">
-            <% quiz_Array.shuffle.each do |answer| %>
+            <% @quiz_Array.shuffle.each do |answer| %>
               <input type="submit" name="answer" value="<%= answer %>">
             <% end %>
           <% end %>
@@ -20,3 +19,5 @@
     </div>
   </div>
 </div>
+
+<%= session.to_hash %>

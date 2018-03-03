@@ -3,12 +3,23 @@ class ContentsController < ApplicationController
   before_action :set_genres
   
   def index
+    if !session[:quiz_id]
+      #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
+      session[:quiz_id] = rand(100) + 1
+    end
   end
   
   def answer
-    @answer = params[:answer]
+    @quiz_id = session[:quiz_id]
+    @user_answer = params[:answer]
     @quiz_id = params[:quiz_id]
+    @quiz_key = session[:quiz_id]
     @quiz = Quiz.find_by(id: @quiz_id)
+    #結果テーブル作成
+    @result =  Result.new(quiz_key: @quiz_key,
+                          quiz_id: @quiz_id,  
+                          user_answer: @user_answer)
+    @result.save
     if @quiz.answer1 == @answer
       flash[:notice] = "正解です"
     else
@@ -42,11 +53,12 @@ class ContentsController < ApplicationController
   end
   
   def set_question
-    if session[:user_id]
+    #if session[:user_id]
       @quiz = Quiz.all.order("RANDOM()").limit(1)
+      @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
     #else
      # @quiz = Quiz.order("RANDOM()").limit(1)
-    end
+    #end
   end
   
   def set_genres
