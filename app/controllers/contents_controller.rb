@@ -3,6 +3,7 @@ class ContentsController < ApplicationController
   before_action :set_genres
   
   def index
+    #@quiz = Quiz.all
     if !session[:quiz_id]
       #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
       session[:quiz_id] = rand(100) + 1
@@ -53,12 +54,24 @@ class ContentsController < ApplicationController
   end
   
   def set_question
-    #if session[:user_id]
-      @quiz = Quiz.all.order("RANDOM()").limit(1)
-      @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
-    #else
-     # @quiz = Quiz.order("RANDOM()").limit(1)
+    #IDを無作為に抽出
+    @id = Quiz.pluck(:id).sample
+    @result = Result.all
+    @count = 1
+    #問題ID振り分け 重複していたらcountを引いて 重複していないかつカウントが問題数と同じならbreak
+    #@result.each do |result|
+     # if result.quiz_id == @id
+      #  @id = Quiz.pluck(:id).sample
+      #  @count -= 1
+    #    next
+    #  elsif @count == @result.count
+     #   break
+     # end
+    #  @count += 1
     #end
+    #@quiz = Quiz.all.order("RANDOM()").limit(1)
+    @quiz = Quiz.find_by(id: @id)
+    @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
   
   def set_genres
