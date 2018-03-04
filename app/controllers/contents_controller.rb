@@ -19,10 +19,10 @@ class ContentsController < ApplicationController
                           quiz_id: @quiz_id,  
                           user_answer: @user_answer)
     @result.save
-    if @quiz.answer1 == @answer
-      flash[:notice] = "正解です"
+    if @quiz.answer1 == @user_answer
+      flash.now[:notice] = "正解です"
     else
-      flash[:notice] = "不正解です"
+      flash.now[:notice] = "不正解です"
     end
     @quiz_comment = @quiz.quiz_comment
     @result_count = Result.where(quiz_key: @quiz_key).count

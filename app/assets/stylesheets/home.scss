@@ -1,5 +1,6 @@
 /* フラッシュ ================================ */
 .flash {
+  margin-bottom: 70px;
   padding: 10px 0;
   color: white;
   background: rgb(251, 170, 88);
@@ -12,8 +13,8 @@
   font-size: 14px;
 }
 
-.main section.page1 {
-  background: #00649F;
+.top section.page1 {
+  background: #3E3E3E;
   color:white;
   text-align:center;
   .contents {
@@ -23,7 +24,7 @@
     }
 }
 
-.main section.page2 {
+.top section.page2 {
   background: #01AAC1;
   color:white;
   text-align:center;
@@ -34,7 +35,7 @@
     }
 }
 
-.main section.page3 {
+.top section.page3 {
   background: #ABCDCB;
   color:white;
   text-align:center;
@@ -46,7 +47,19 @@
 }
 
 
-.btns {
-  clear: both;
-  width: 435px;
+.btns{
+    display: inline-block;
+    padding: 14px 40px;
+    margin-top: 20px;
+  	border-radius: 20px;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #FF3CAC;
+    background-image: linear-gradient(175deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    transition: .4s;
+    
+    :hover {
+      background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+      background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+    }
 }

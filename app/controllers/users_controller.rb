@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   
   def logout
     session[:user_id] = nil
-    flash[:notice] = "ログアウトしました"
+    flash.now[:notice] = "ログアウトしました"
     redirect_to("/")
   end
   
