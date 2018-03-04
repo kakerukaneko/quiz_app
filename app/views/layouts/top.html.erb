@@ -1,4 +1,17 @@
-<div class="main">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QuizApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="main">
     <section class="page1">
       <div class="contents">
         <h1>クイズを、はじめましょう!</h1>
@@ -18,7 +31,8 @@
       <div class="contents">
         <h1>簡単でしょう？</h1>
         <p>さぁ、さっそくはじめてみましょう！</p>
-        <%= link_to "はじめる", '/index', class: "btns" %>
       </div>
     </section>
-</div>
+    </div>
+  </body>
+</html>
