@@ -5,6 +5,7 @@ class ContentsController < ApplicationController
   def index
     @id = Quiz.pluck(:id).sample
     @quiz = Quiz.find_by(id: @id)
+    @genre_id = @quiz.genre_id
     if !session[:quiz_id]
       #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
       session[:quiz_id] = rand(100) + 1
