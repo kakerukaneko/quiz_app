@@ -1,14 +1,18 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">問題</div>
+    <h1 class="form-heading">解答</h1>
     <div class="form users-form">
       <div class="form-body">
+        <div　class="answer">
+          <img src="<%= @pic %>" width="300" height="100">
+        </div>
         <%=  @quiz_comment %>
+        <br />
         <% if @result_count >= 10  && session[:user_id] || @result_count >= 5 && !session[:user_id]  %>
-        <%= link_to("結果発表へ", "/contents/kekka") %>
-        <% else %>
-        <%= link_to("次の問題へ", "/index") %>
-        <% end %>
+          <%= link_to("結果発表へ", "/contents/kekka",class: "result") %>
+          <% else %>
+          <%= link_to("次の問題へ", "/index",class: "next") %>
+          <% end %>
       </div>
     </div>
   </div>

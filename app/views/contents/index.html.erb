@@ -1,16 +1,18 @@
 <div class="main users-edit">
   <div class="container">
-    <div class="form-heading">問題</div>
+    <h1 class="form-heading">問題</h1>
     <div class="form users-form">
       <div class="form-body">
-          ジャンル<%= @genres[@quiz.genre_id-1] %>
           No <%= @count %>
-          <br /><%= @quiz.content %>
+          ジャンル「<%= @genres[@quiz.genre_id-1] %>」
+          <br /><div class="content"><%= @quiz.content %></div>
           <%= form_tag("/contents/answer", method: :get) do %>
             <input type="hidden" name="quiz_id" value="<%= @quiz.id %>">
+            <ul class="answer">
             <% @quiz_Array.shuffle.each do |answer| %>
-              <input type="submit" name="answer" value="<%= answer %>">
+              <li><input type="submit" name="answer" value="<%= answer %>" id="answers"></li>
             <% end %>
+            </ul>
           <% end %>
       </div>
     </div>

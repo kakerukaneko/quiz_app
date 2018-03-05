@@ -20,9 +20,9 @@ class ContentsController < ApplicationController
                           user_answer: @user_answer)
     @result.save
     if @quiz.answer1 == @user_answer
-      flash.now[:notice] = "正解です"
+      @pic = "/logo_images/good.jpg"
     else
-      flash.now[:notice] = "不正解です"
+      @pic = "/logo_images/bad.jpg"
     end
     @quiz_comment = @quiz.quiz_comment
     @result_count = Result.where(quiz_key: @quiz_key).count
