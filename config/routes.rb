@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
   
   get "index" => "contents#index"
-  get "contents/list" => "contents#list"
-  get "contents/answer" => "contents#answer"
-  get "contents/create" => "contents#create"
-  post "contents/created" => "contents#created"
-  get "contents/kekka" => "contents#kekka"
   
   get "signup" => "users#new"
   post "users/create" => "users#create"

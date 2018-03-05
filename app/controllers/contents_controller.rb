@@ -9,63 +9,6 @@ class ContentsController < ApplicationController
     end
   end
   
-  def list
-    @contents = Quiz.all.order(created_at: :desc)
-  end
-  
-  def answer
-    @user_answer = params[:answer]
-    @quiz_id = params[:quiz_id]
-    @quiz_key = session[:quiz_id]
-    @quiz = Quiz.find_by(id: @quiz_id)
-    #結果テーブル作成
-    @result =  Result.new(quiz_key: @quiz_key,
-                          quiz_id: @quiz_id,  
-                          user_answer: @user_answer)
-    @result.save
-    if @quiz.answer1 == @user_answer
-      @pic = "/logo_images/good.jpg"
-    else
-      @pic = "/logo_images/bad.jpg"
-    end
-    @quiz_comment = @quiz.quiz_comment
-    @result_count = Result.where(quiz_key: @quiz_key).count
-  end
-  
-  def kekka
-    @result_Array = Array.new
-    @quiz_key = session[:quiz_id]
-    @results = Result.where(quiz_key: @quiz_key)
-    @quiz = Quiz.all
-    @i = 0
-    @results.each do |result|
-      @result_Array.push(result) 
-    end
-    #結果の表示が終わったらクイズキー セッション共に破棄する
-    @results.delete_all
-    session[:quiz_id] = nil
-  end
-  
-  def create
-     @quiz = Quiz.new
-     @genre = Genre.all
-  end
-  
-  def created
-    @quiz = Quiz.new(question_params)
-  
-    if params[:content_picture]
-      @quiz.content_picture = "#{@quiz.id}.contentjpg"
-      image = params[:content_picture]
-      File.binwrite("public/content_images/#{@quiz.content_picture}", image.read)
-    end
-    if @quiz.save
-      flash[:notice] = "問題を投稿しました"
-      redirect_to("/")
-    else
-      render("contents/create")
-    end
-  end
   
   def set_question
     #IDを無作為に抽出
