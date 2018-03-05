@@ -1,3 +1,47 @@
+/* line 1, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/contents.scss */
+.content {
+  margin-bottom: 50px;
+}
+
+/* line 5, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/contents.scss */
+li {
+  list-style: none;
+}
+
+/* line 9, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/contents.scss */
+.answer {
+  padding-left: 100px;
+}
+
+/* line 13, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/contents.scss */
+.next {
+  display: inline-block;
+  padding: 14px 40px;
+  margin: 20px 200px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #3ecdc6;
+  transition: .4s;
+}
+
+/* line 24, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/contents.scss */
+.result {
+  display: inline-block;
+  padding: 14px 40px;
+  margin: 20px 200px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #FF3CAC;
+  background-image: linear-gradient(175deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  transition: .4s;
+}
+/* line 35, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/contents.scss */
+.result :hover {
+  background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
 @charset "UTF-8";
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -8781,9 +8825,10 @@ button.close {
 }
 /* mixins, variables, etc. */
 /* universal */
-/* line 15, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 14, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 body {
   padding-top: 60px;
+  background-color: #3E3E3E;
 }
 
 /* line 19, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
@@ -8836,7 +8881,7 @@ p {
 }
 
 /* header */
-/* line 64, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 61, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 #logo {
   float: left;
   margin-right: 10px;
@@ -8847,38 +8892,38 @@ p {
   padding-top: 9px;
   font-weight: bold;
 }
-/* line 73, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 70, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 #logo:hover {
   color: white;
   text-decoration: none;
 }
 
 /* footer */
-/* line 81, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 77, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777777;
 }
-/* line 86, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 82, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 footer a {
   color: #555555;
 }
-/* line 88, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 84, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 footer a:hover {
   color: #222222;
 }
-/* line 92, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 88, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 footer small {
   float: left;
 }
-/* line 95, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 91, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 footer ul {
   float: right;
   list-style: none;
 }
-/* line 98, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 94, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 footer ul li {
   float: left;
   margin-left: 15px;
@@ -8886,7 +8931,12 @@ footer ul li {
 
 /* forms */
 /* フォーム================================ */
-/* line 108, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 104, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+.height {
+  margin-top: 100px;
+}
+
+/* line 107, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form {
   max-width: 600px;
   margin: 0 auto;
@@ -8894,7 +8944,7 @@ footer ul li {
   box-shadow: 0 2px 6px #c1ced7;
 }
 
-/* line 115, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 114, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form-heading {
   font-weight: 300;
   margin: 60px 0 20px;
@@ -8902,17 +8952,17 @@ footer ul li {
   color: #bcc8d4;
 }
 
-/* line 122, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 121, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form-body {
   padding: 30px;
 }
 
-/* line 126, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 125, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form-error {
   color: #ff4d75;
 }
 
-/* line 130, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 129, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form input {
   width: 100%;
   border: 1px solid #d8dadf;
@@ -8923,7 +8973,7 @@ footer ul li {
   border-radius: 2px;
 }
 
-/* line 140, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 139, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form textarea {
   width: 100%;
   min-height: 110px;
@@ -8931,20 +8981,20 @@ footer ul li {
   letter-spacing: 2px;
 }
 
-/* line 147, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 146, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form input[type="submit"] {
   background-color: #3ecdc6;
   color: white;
   cursor: pointer;
   font-weight: 300;
-  width: 120px;
+  width: 200px;
   border-radius: 2px;
   margin-top: 8px;
   margin-bottom: 0;
-  float: right;
+  text-align: center;
 }
 
-/* line 159, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 158, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .form-body:after {
   content: '';
   display: table;
@@ -8952,16 +9002,16 @@ footer ul li {
 }
 
 /* users/show ================================ */
-/* line 166, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 165, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .user-show {
   text-align: center;
 }
 
-/* line 170, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 169, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .user {
   margin-bottom: 20px;
 }
-/* line 172, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 171, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .user img {
   width: 80px;
   height: 80px;
@@ -8969,16 +9019,17 @@ footer ul li {
   margin: 20px 0 10px;
   object-fit: cover;
 }
-/* line 179, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 178, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .user h2 {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
 }
-/* line 184, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
+/* line 183, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .user p {
   font-size: 13px;
   margin-bottom: 15px;
+  color: white;
 }
 /* line 188, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/custom.scss */
 .user a {
@@ -8996,6 +9047,7 @@ footer ul li {
 /* フラッシュ ================================ */
 /* line 3, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
 .flash {
+  margin-bottom: 70px;
   padding: 10px 0;
   color: white;
   background: #fbaa58;
@@ -9006,6 +9058,174 @@ footer ul li {
   width: 100%;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
+}
+
+/* line 17, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.top section.page1 {
+  background: #3E3E3E;
+  color: white;
+  text-align: center;
+}
+/* line 21, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.top section.page1 .contents {
+  margin: 400px auto;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+/* line 28, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.top section.page2 {
+  background: #01AAC1;
+  color: white;
+  text-align: center;
+}
+/* line 32, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.top section.page2 .contents {
+  margin: 400px auto;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+/* line 39, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.top section.page3 {
+  background: #ABCDCB;
+  color: white;
+  text-align: center;
+}
+/* line 43, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.top section.page3 .contents {
+  margin: 400px auto;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+/* line 51, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.btns {
+  display: inline-block;
+  padding: 14px 40px;
+  margin-top: 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #FF3CAC;
+  background-image: linear-gradient(175deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+  transition: .4s;
+}
+/* line 62, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/home.scss */
+.btns :hover {
+  background-image: -webkit-linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+/* line 1, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+body, html {
+  margin: 0;
+  overflow: hidden;
+  -webkit-transition: opacity 400ms;
+  -moz-transition: opacity 400ms;
+  transition: opacity 400ms;
+}
+
+/* line 9, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+body, .onepage-wrapper, html {
+  display: block;
+  position: static;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 17, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  padding: 0;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* line 26, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-wrapper .section {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 31, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-pagination {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  z-index: 5;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 40, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-pagination li {
+  padding: 0;
+  text-align: center;
+}
+
+/* line 44, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-pagination li a {
+  padding: 10px;
+  width: 4px;
+  height: 4px;
+  display: block;
+}
+
+/* line 51, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-pagination li a:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+/* line 62, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.onepage-pagination li a.active:before {
+  width: 10px;
+  height: 10px;
+  background: none;
+  border: 1px solid black;
+  margin-top: -4px;
+  left: 8px;
+}
+
+/* line 71, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.disabled-onepage-scroll, .disabled-onepage-scroll .wrapper {
+  overflow: auto;
+}
+
+/* line 75, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.disabled-onepage-scroll .onepage-wrapper .section {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+}
+
+/* line 80, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.disabled-onepage-scroll .onepage-wrapper {
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  transform: none !important;
+  -ms-transform: none !important;
+  min-height: 100%;
+}
+
+/* line 89, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+.disabled-onepage-scroll .onepage-pagination {
+  display: none;
+}
+
+/* line 93, /home/ec2-user/environment/quiz_app/app/assets/stylesheets/onepage-scroll.scss */
+body.disabled-onepage-scroll, .disabled-onepage-scroll .onepage-wrapper, html {
+  position: inherit;
 }
 @charset "UTF-8";
 /*
