@@ -15,7 +15,7 @@ class ContentsController < ApplicationController
     @result = Result.all
     @quiz_key = session[:quiz_id]
     #@quiz = Quiz.all.order("RANDOM()").limit(1)
-    @quiz = Quiz.find_by(id: @id)
+    @quiz = Quiz.order(id: :asc).find_by(id: @id)
     @count = @result.where(quiz_key: @quiz_key).count+1
     #@quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
