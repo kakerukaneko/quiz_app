@@ -18,11 +18,7 @@ class ContentsController < ApplicationController
     #@quiz = Quiz.all.order("RANDOM()").limit(1)
     @quiz = Quiz.find_by(id: @id)
     @count = @result.where(quiz_key: @quiz_key).count+1
-    @answer1 = @quiz.answer1
-    @answer2 = @quiz.answer2
-    @answer3 = @quiz.answer3
-    @answer4 = @quiz.answer4
-    @quiz_Array = [@answer1,@answer2,@answer3,@answer4]
+    @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
   
   def set_genres
