@@ -9,40 +9,6 @@ class ContentsController < ApplicationController
     end
   end
   
-  def kekka
-    @result_Array = Array.new
-    @quiz_key = session[:quiz_id]
-    @results = Result.where(quiz_key: @quiz_key)
-    @quiz = Quiz.all
-    @i = 0
-    @results.each do |result|
-      @result_Array.push(result)
-    end
-    #結果の表示が終わったらクイズキー セッション共に破棄する
-    @results.delete_all
-    session[:quiz_id] = nil
-  end
-  
-  def answer
-    @user_answer = params[:answer]
-    @quiz_id = params[:quiz_id]
-    @quiz_key = session[:quiz_id]
-    @quiz = Quiz.find_by(id: @quiz_id)
-    #結果テーブル作成
-    @result =  Result.new(quiz_key: @quiz_key,
-                          quiz_id: @quiz_id,
-                          user_answer: @user_answer)
-    @result.save
-    if @quiz.answer1 == @user_answer
-      @pic = "/logo_images/good.jpg"
-    else
-      @pic = "/logo_images/bad.jpg"
-    end
-    @quiz_comment = @quiz.quiz_comment
-    @result_count = Result.where(quiz_key: @quiz_key).count
-  end
-  
-  
   def set_question
     #IDを無作為に抽出
     @id = Quiz.pluck(:id).sample
