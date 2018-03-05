@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  #before_action :set_question
+  before_action :set_question
   before_action :set_genres
   
   def index
@@ -9,6 +9,17 @@ class ContentsController < ApplicationController
     end
   end
   
+  
+  def set_question
+    #IDを無作為に抽出
+    @id = Quiz.pluck(:id).sample
+    @result = Result.all
+    @quiz_key = session[:quiz_id]
+    #@quiz = Quiz.all.order("RANDOM()").limit(1)
+    @quiz = Quiz.find_by(id: @id)
+    @count = @result.where(quiz_key: @quiz_key).count+1
+    @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
+  end
   
   def set_genres
     @genre = Genre.all
