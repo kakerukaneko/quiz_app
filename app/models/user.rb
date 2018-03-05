@@ -7,4 +7,8 @@ class User < ApplicationRecord
   }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 },allow_nil: true
+  
+  def quiz
+    return Quiz.where(quiz_addId: self.id)
+  end
 end

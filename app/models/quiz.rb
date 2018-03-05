@@ -6,4 +6,8 @@ class Quiz < ApplicationRecord
     validates :answer3, {presence: true, length: { maximum: 20}}
     validates :answer4, {presence: true, length: { maximum: 20}}
     validates :quiz_comment, {presence: true, length: { maximum: 140}}
+    
+    def user
+        return User.find_by(id: self.quiz_addId)
+    end
 end

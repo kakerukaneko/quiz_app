@@ -9,6 +9,10 @@ class ContentsController < ApplicationController
     end
   end
   
+  def list
+    @contents = Quiz.all.order(created_at: :desc)
+  end
+  
   def answer
     @user_answer = params[:answer]
     @quiz_id = params[:quiz_id]
@@ -68,18 +72,7 @@ class ContentsController < ApplicationController
     @id = Quiz.pluck(:id).sample
     @result = Result.all
     @quiz_key = session[:quiz_id]
-    #問題ID振り分け 重複していたらcountを引いて 重複していないかつカウントが問題数と同じならbreak
-    #@result.each do |result|
-     # if result.quiz_id == @id
-      #  @id = Quiz.pluck(:id).sample
-      #  @count -= 1
-    #    next
-    #  elsif @count == @result.count
-     #   break
-     # end
-    #  @count += 1
-    #end
-    #@quiz = Quiz.all.order("RANDOM()").limit(1)
+    @quiz = Quiz.all.order("RANDOM()").limit(1)
     @quiz = Quiz.find_by(id: @id)
     @count = @result.where(quiz_key: @quiz_key).count+1
     @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]

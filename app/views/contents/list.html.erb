@@ -1,0 +1,17 @@
+<div>
+  <div >
+    <% @contents.each do |content| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+          <img src="<%= "/user_images/#{content.user.image_name}" %>">
+        </div>
+        <div>
+          <div >
+            <%= link_to(content.user.name, "/users/#{content.user.id}") %>
+          </div>
+          <%= content.content %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

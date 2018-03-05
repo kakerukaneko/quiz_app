@@ -1,37 +1,24 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="conrainer" >
-    <%= link_to("Q", "/",id: "logo") %>
-  </div>
+    <div class="conrainer" >
+      <%= link_to("Q", "/",id: "logo") %>
+    </div>
   <ul class="nav navbar-nav navbar-right">
   <% if @current_user %> 
-        <% if @current_user %>
-          <li>
-             <img src="<%= "/user_images/#{@current_user.image_name}" %>" class="prof" width="50" height="50">
-          </li>
-          <li>
-            <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
-          </li>
-          <li>
-            <%= link_to("アカウント設定", "/users/#{@current_user.id}/edit") %>
-          </li>
-          <li>
-            <%= link_to("ログアウト", "/logout", {method: :post}) %>
-          </li>
-          <li>
-            <%= link_to("問題を作る", "/contents/create") %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to("TweetAppとは", "/about") %>
-          </li>
-          <li>
-            <%= link_to("新規登録", "/signup") %>
-          </li>
-          <li>
-            <%= link_to("ログイン", "/login") %>
-          </li>
-        <% end %>
-      
+    <li>
+       <img src="<%= "/user_images/#{@current_user.image_name}" %>" class="prof" width="50" height="50">
+    </li>
+    <li>
+      <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+    </li>
+    <li>
+      <%= link_to("アカウント設定", "/users/#{@current_user.id}/edit") %>
+    </li>
+    <li>
+      <%= link_to("ログアウト", "/logout", {method: :post}) %>
+    </li>
+    <li>
+      <%= link_to("問題を作る", "/contents/create") %>
+    </li>
   <% else %>
   <li>
     <%= link_to("新規登録", "/signup") %>
