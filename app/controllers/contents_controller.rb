@@ -9,6 +9,19 @@ class ContentsController < ApplicationController
     end
   end
   
+  def kekka
+    @result_Array = Array.new
+    @quiz_key = session[:quiz_id]
+    @results = Result.where(quiz_key: @quiz_key)
+    @quiz = Quiz.all
+    @i = 0
+    @results.each do |result|
+      @result_Array.push(result)
+    end
+    #結果の表示が終わったらクイズキー セッション共に破棄する
+    @results.delete_all
+    session[:quiz_id] = nil
+  end
   
   def set_question
     #IDを無作為に抽出

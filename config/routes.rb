@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   get "index" => "contents#index"
+  get "contents/kekka" => "contents#kekka"
   
   get "signup" => "users#new"
   post "users/create" => "users#create"
