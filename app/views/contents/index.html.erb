@@ -3,7 +3,18 @@
     <h1 class="form-heading">問題</h1>
     <div class="form users-form">
       <div class="form-body">
-          ジャンル「<%= @genres[1] %>」
+          No <%= @count %>
+          ジャンル「<%= @genres[@quiz.genre_id-1] %>」
+          <br /><div class="content"><%= @quiz.content %></div>
+          <%= form_tag("/contents/answer", method: :get) do %>
+            <input type="hidden" name="quiz_id" value="<%= @quiz.id %>">
+            <ul class="answer">
+<% quiz_Array = ["osifru","osifru","osifru","osifru"]  %>
+              <% quiz_Array.shuffle.each do |answer| %>
+              <li><input type="submit" name="answer" value="<%= answer %>" id="answers"></li>
+            <% end %>
+            </ul>
+          <% end %>
       </div>
     </div>
   </div>
