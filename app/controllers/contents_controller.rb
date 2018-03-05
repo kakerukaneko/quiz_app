@@ -1,8 +1,9 @@
 class ContentsController < ApplicationController
-  before_action :set_question
+  #before_action :set_question
   before_action :set_genres
   
   def index
+    @id = Quiz.pluck(:id).sample
     @quiz = Quiz.find_by(id: @id)
     if !session[:quiz_id]
       #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
