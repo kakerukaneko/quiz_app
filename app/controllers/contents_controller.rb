@@ -3,6 +3,7 @@ class ContentsController < ApplicationController
   before_action :set_genres
   
   def index
+    @quiz = Quiz.find_by(id: @id)
     if !session[:quiz_id]
       #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
       session[:quiz_id] = rand(100) + 1
@@ -15,7 +16,7 @@ class ContentsController < ApplicationController
     @result = Result.all
     @quiz_key = session[:quiz_id]
     #@quiz = Quiz.all.order("RANDOM()").limit(1)
-    @quiz = Quiz.order(id: :asc).find_by(id: @id)
+    @quiz = Quiz.find_by(id: @id)
     @count = @result.where(quiz_key: @quiz_key).count+1
     #@quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
