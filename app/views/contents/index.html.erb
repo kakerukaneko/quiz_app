@@ -3,8 +3,7 @@
     <h1 class="form-heading">問題</h1>
     <div class="form users-form">
       <div class="form-body">
-        <% quiz = @quiz %>
-          ジャンル「<%= @genre_id %>」
+          ジャンル「<%= @genres[@quiz.genre_id-1] %>」
       </div>
     </div>
   </div>
