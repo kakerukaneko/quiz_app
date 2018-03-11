@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
-  before_action :set_question
+  layout "second_layout"
+  before_action :set_question, only: [:index]
   before_action :set_genres
-  
   def index
     if !session[:quiz_id]
       #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
@@ -42,14 +42,15 @@ class ContentsController < ApplicationController
     session[:quiz_id] = nil
   end
   
+    
   def create
      @quiz = Quiz.new
      @genre = Genre.all
+     render :layout => "application"
   end
-
+  
   def created
     @quiz = Quiz.new(question_params)
-
     if params[:content_picture]
       @quiz.content_picture = "#{@quiz.id}.contentjpg"
       image = params[:content_picture]
@@ -59,17 +60,29 @@ class ContentsController < ApplicationController
       flash[:notice] = "問題を投稿しました"
       redirect_to("/")
     else
-      render("contents/create")
+      render("contents/create",:layout => "application")
     end
   end
+  
 
   def set_question
     #IDを無作為に抽出
-    @id = Quiz.pluck(:id).sample
+    #@id = Quiz.pluck(:id).sample
+    #@id = Quiz.pluck(:id).not( quiz_id: [1,2]).sample
+    #Resultをとりあえず全て入れる
     @result = Result.all
+    @duplicateId = Array.new
     @quiz_key = session[:quiz_id]
-    #@quiz = Quiz.all.order("RANDOM()").limit(1)
-    @quiz = Quiz.find_by(id: @id)
+    if session[:quiz_id]
+      @result.each do |result|
+        @duplicateId.push(result.quiz_id) 
+      end
+      @quiz = Quiz.where.not( id: @duplicateId).order("RANDOM()").first
+    else
+      #quiz_idを入れる
+      @quiz = Quiz.order("RANDOM()").first
+    end
+    #Resultに入ったクイズキーの数をカウント、最初は0なのでカウント１する。
     @count = @result.where(quiz_key: @quiz_key).count+1
     @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
@@ -88,5 +101,4 @@ class ContentsController < ApplicationController
       params.require(:quiz).permit(:content, :content_picture, :answer1,:answer2,:answer3,:answer4,
                                    :genre_id,:quiz_comment,:quiz_addId)
     end
-    
 end

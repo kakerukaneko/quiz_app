@@ -15,7 +15,6 @@
  * ========================================================== */
 
 !function($){
-
   var defaults = {
     sectionContainer: "section",
     easing: "ease",
