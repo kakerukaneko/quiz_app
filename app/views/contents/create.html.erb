@@ -4,11 +4,9 @@
     <%= form_for @quiz,:url => { :controller => :contents, :action => :created },multipart: true do |f| %>
       <div class="form">
         <div class="form-body">
-          <% @quiz.errors.full_messages.each do |message| %>
             <div class="form-error">
-              <%= message %>
+              <%= @error_message %>
             </div>
-            <% end %>
             <%= f.label "Genre" %>
             <%= f.collection_select :genre_id, Genre.all, :id, :name,:prompt => "ジャンル" %>
             <br />

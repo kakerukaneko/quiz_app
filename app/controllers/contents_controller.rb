@@ -60,6 +60,7 @@ class ContentsController < ApplicationController
       flash[:notice] = "問題を投稿しました"
       redirect_to("/")
     else
+      @error_message = "入力値に空値があるよ！"
       render("contents/create",:layout => "application")
     end
   end
