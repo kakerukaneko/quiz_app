@@ -67,9 +67,6 @@ class ContentsController < ApplicationController
   
 
   def set_question
-    #IDを無作為に抽出
-    #@id = Quiz.pluck(:id).sample
-    #@id = Quiz.pluck(:id).not( quiz_id: [1,2]).sample
     #Resultをとりあえず全て入れる
     @result = Result.all
     @duplicateId = Array.new
