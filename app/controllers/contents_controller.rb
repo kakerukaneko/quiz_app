@@ -2,9 +2,9 @@ class ContentsController < ApplicationController
   layout "second_layout"
   before_action :set_question, only: [:index]
   before_action :set_genres
+  
   def index
     if !session[:quiz_id]
-      #ランダムでクイズキーを発行する。固有のキーになる。(問題終了後 破棄する)
       session[:quiz_id] = rand(100) + 1
     end
   end
@@ -14,8 +14,7 @@ class ContentsController < ApplicationController
     @quiz_id = params[:quiz_id]
     @quiz_key = session[:quiz_id]
     @quiz = Quiz.find_by(id: @quiz_id)
-    #結果テーブル作成
-    @result =  Result.new(quiz_key: @quiz_key,
+    @result = Result.new(quiz_key: @quiz_key,
                           quiz_id: @quiz_id,
                           user_answer: @user_answer)
     @result.save
@@ -37,16 +36,14 @@ class ContentsController < ApplicationController
     @results.each do |result|
       @result_Array.push(result)
     end
-    #結果の表示が終わったらクイズキー セッション共に破棄する
     @results.delete_all
     session[:quiz_id] = nil
   end
   
-    
   def create
-     @quiz = Quiz.new
-     @genre = Genre.all
-     render :layout => "application"
+  　@quiz = Quiz.new
+  　@genre = Genre.all
+  　render :layout => "application"
   end
   
   def created
@@ -64,10 +61,8 @@ class ContentsController < ApplicationController
       render("contents/create",:layout => "application")
     end
   end
-  
 
   def set_question
-    #Resultをとりあえず全て入れる
     @result = Result.all
     @duplicateId = Array.new
     @quiz_key = session[:quiz_id]
@@ -77,10 +72,8 @@ class ContentsController < ApplicationController
       end
       @quiz = Quiz.where.not( id: @duplicateId).order("RANDOM()").first
     else
-      #quiz_idを入れる
       @quiz = Quiz.order("RANDOM()").first
     end
-    #Resultに入ったクイズキーの数をカウント、最初は0なのでカウント１する。
     @count = @result.where(quiz_key: @quiz_key).count+1
     @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
