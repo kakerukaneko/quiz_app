@@ -1,5 +1,4 @@
 class ContentsController < ApplicationController
-  layout "second_layout"
   before_action :set_question, only: [:index]
   before_action :set_genres
   
@@ -41,9 +40,8 @@ class ContentsController < ApplicationController
   end
   
   def create
-  　@quiz = Quiz.new
-  　@genre = Genre.all
-  　render :layout => "application"
+    @quiz = Quiz.new
+    @genre = Genre.all
   end
   
   def created
@@ -58,7 +56,6 @@ class ContentsController < ApplicationController
       redirect_to("/")
     else
       @error_message = "入力値に空値があるよ！"
-      render("contents/create",:layout => "application")
     end
   end
 
