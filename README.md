@@ -1,24 +1,27 @@
-# README
+3min Culture Quiz
+====
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+３分かからず問題を解く事が出来るクイズアプリケーション  
 
-Things you may want to cover:
+## 概要  
+映画 音楽 建築 芸術 文学の５ジャンルから出題される。  ゲストユーザーは5問解ける、ログインユーザーは10問解ける事ができ、問題も作成する事が可能。  
 
-* Ruby version
 
-* System dependencies
+## Demo  
+![quiz_app](https://user-images.githubusercontent.com/34589352/39963444-1bcdd352-56a6-11e8-9eb7-05d9d12244fa.gif)
 
-* Configuration
+## 環境
+- 言語
+    - Ruby 2.4.1
+    - JavaScript
+    - HTML/CSS
+    - Sass 3.5.5
+- フレームワーク
+    - RubyonRails 5.1.4
+- データベース
+    - PostgreSQL 10.3
+- サーバー
+    - Heroku
+## Author
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[kakeru kaneko](https://github.com/kakerukaneko)
