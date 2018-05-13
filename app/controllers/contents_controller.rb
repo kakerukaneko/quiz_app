@@ -17,11 +17,13 @@ class ContentsController < ApplicationController
                          quiz_id: @quiz_id,
                          user_answer: @user_answer)
     @result.save
+    
     if @quiz.answer1 == @user_answer
       @pic = "/logo_images/good.jpg"
     else
       @pic = "/logo_images/bad.jpg"
     end
+    
     @quiz_comment = @quiz.quiz_comment
     @result_count = Result.where(quiz_key: @quiz_key).count
   end
@@ -46,11 +48,13 @@ class ContentsController < ApplicationController
   
   def created
     @quiz = Quiz.new(question_params)
+    
     if params[:content_picture]
       @quiz.content_picture = "#{@quiz.id}.contentjpg"
       image = params[:content_picture]
       File.binwrite("public/content_images/#{@quiz.content_picture}", image.read)
     end
+    
     if @quiz.save
       flash[:notice] = "問題を投稿しました"
       redirect_to("/")
@@ -63,6 +67,7 @@ class ContentsController < ApplicationController
     @result = Result.all
     @duplicateId = Array.new
     @quiz_key = session[:quiz_id]
+    
     if session[:quiz_id]
       @result.each do |result|
         @duplicateId.push(result.quiz_id) 
@@ -71,6 +76,7 @@ class ContentsController < ApplicationController
     else
       @quiz = Quiz.order("RANDOM()").first
     end
+    
     @count = @result.where(quiz_key: @quiz_key).count+1
     @quiz_Array = [@quiz.answer1,@quiz.answer2,@quiz.answer3,@quiz.answer4]
   end
