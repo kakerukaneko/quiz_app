@@ -14,8 +14,8 @@ class ContentsController < ApplicationController
     @quiz_key = session[:quiz_id]
     @quiz = Quiz.find_by(id: @quiz_id)
     @result = Result.new(quiz_key: @quiz_key,
-                          quiz_id: @quiz_id,
-                          user_answer: @user_answer)
+                         quiz_id: @quiz_id,
+                         user_answer: @user_answer)
     @result.save
     if @quiz.answer1 == @user_answer
       @pic = "/logo_images/good.jpg"
@@ -67,7 +67,7 @@ class ContentsController < ApplicationController
       @result.each do |result|
         @duplicateId.push(result.quiz_id) 
       end
-      @quiz = Quiz.where.not( id: @duplicateId).order("RANDOM()").first
+      @quiz = Quiz.where.not(id: @duplicateId).order("RANDOM()").first
     else
       @quiz = Quiz.order("RANDOM()").first
     end
