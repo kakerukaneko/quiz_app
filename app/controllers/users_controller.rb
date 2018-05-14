@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to action: "show", id: @user.id
     else
-      render("users/new")
+      render :new
     end
   end
   
@@ -35,14 +35,14 @@ class UsersController < ApplicationController
       @error_message = "メールアドレスまたはパスワードが間違っています"
       @email = params[:email]
       @password = params[:password]
-      render("users/login_form")
+      render :login_form
     end
   end
   
   def logout
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
-    redirect_to action: "top"
+    redirect_to root_url
   end
   
   def edit
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
       flash[:notice] = "ユーザー情報を編集しました"
       redirect_to action: "show", id: @user.id
     else
-      render("users/edit")
+      render :edit
     end
   end
 end
