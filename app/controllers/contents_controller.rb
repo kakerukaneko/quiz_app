@@ -57,7 +57,7 @@ class ContentsController < ApplicationController
     
     if @quiz.save
       flash[:notice] = "問題を投稿しました"
-      redirect_to("/")
+      redirect_to root_url
     else
       @error_message = "入力値に空値があるよ！"
     end

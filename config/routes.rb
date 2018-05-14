@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
   
-  get "index" => "contents#index"
-  get "contents/answer" => "contents#answer"
-  get "contents/create" => "contents#create"
-  post "contents/created" => "contents#created"
-  get "contents/kekka" => "contents#kekka"
+  root 'home#top'
+  get 'about', to: 'home#about'
   
-  get "signup" => "users#new"
-  post "users/create" => "users#create"
-  get "users/:id" => "users#show"
-  post "login" => "users#login"
-  post "logout" => "users#logout"
-  get "login" => "users#login_form"
-  post "users/:id/update" => "users#update"
-  get "users/:id/edit" => "users#edit"
+  get "index", to: "contents#index"
+  get "contents/answer", to: "contents#answer"
+  get "contents/create", to: "contents#create"
+  post "contents/created", to: "contents#created"
+  get "contents/kekka", to: "contents#kekka"
   
-  get "/" => "home#top"
-  get "about" => "home#about"
+  get "signup", to: "users#new"
+  post "users/create", to: "users#create"
+  get "users/:id", to: "users#show"
+  post "login", to: "users#login"
+  post "logout", to: "users#logout"
+  get "login", to: "users#login_form"
+  post "users/:id/update", to: "users#update"
+  get "users/:id/edit", to: "users#edit"
 end
