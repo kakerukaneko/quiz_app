@@ -41,12 +41,12 @@ class ContentsController < ApplicationController
     session[:quiz_id] = nil
   end
   
-  def create
+  def new
     @quiz = Quiz.new
     @genre = Genre.all
   end
   
-  def created
+  def create
     @quiz = Quiz.new(question_params)
     
     if params[:content_picture]
@@ -60,7 +60,7 @@ class ContentsController < ApplicationController
       redirect_to root_url
     else
       @error_message = "入力値に空値があるよ！"
-      render :create
+      render new_content_path
     end
   end
 
