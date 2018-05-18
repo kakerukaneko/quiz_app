@@ -60,7 +60,7 @@ class ContentsController < ApplicationController
       redirect_to root_url
     else
       @error_message = "入力値に空値があるよ！"
-      render new_content_path
+      render new_contents_path
     end
   end
 
