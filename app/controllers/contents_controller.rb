@@ -28,7 +28,7 @@ class ContentsController < ApplicationController
     @result_count = Result.where(quiz_key: @quiz_key).count
   end
   
-  def kekka
+  def result
     @result_Array = Array.new
     @quiz_key = session[:quiz_id]
     @results = Result.where(quiz_key: @quiz_key)

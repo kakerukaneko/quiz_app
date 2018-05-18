@@ -13,9 +13,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resource :contents do
+  resource :contents, only: [:new,:edit,:create] do
     get 'index'
     get 'answer'
-    get 'kekka'
+    get 'result'
   end
 end
