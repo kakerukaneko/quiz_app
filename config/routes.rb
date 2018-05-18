@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'home#top'
+  
   resources :users do
     collection do
       post 'login'
@@ -16,6 +18,4 @@ Rails.application.routes.draw do
     get 'answer'
     get 'kekka'
   end
-  
-  root to: 'home#top'
 end
