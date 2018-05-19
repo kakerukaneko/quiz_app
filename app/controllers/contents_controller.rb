@@ -28,7 +28,7 @@ class ContentsController < ApplicationController
     @result_count = Result.where(quiz_key: @quiz_key).count
   end
   
-  def kekka
+  def result
     @result_Array = Array.new
     @quiz_key = session[:quiz_id]
     @results = Result.where(quiz_key: @quiz_key)
@@ -41,12 +41,12 @@ class ContentsController < ApplicationController
     session[:quiz_id] = nil
   end
   
-  def create
+  def new
     @quiz = Quiz.new
     @genre = Genre.all
   end
   
-  def created
+  def create
     @quiz = Quiz.new(question_params)
     
     if params[:content_picture]
@@ -57,9 +57,10 @@ class ContentsController < ApplicationController
     
     if @quiz.save
       flash[:notice] = "問題を投稿しました"
-      redirect_to("/")
+      redirect_to root_url
     else
       @error_message = "入力値に空値があるよ！"
+      render :new
     end
   end
 

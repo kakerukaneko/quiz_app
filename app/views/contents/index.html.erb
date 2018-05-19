@@ -6,7 +6,7 @@
           No <%= @count %>
           ジャンル「<%= @genres[@quiz.genre_id-1] %>」
           <br /><div class="content"><%= @quiz.content %></div>
-          <%= form_tag("/contents/answer", method: :get) do %>
+          <%= form_tag answer_contents_path, method: :get do %>
             <input type="hidden" name="quiz_id" value="<%= @quiz.id %>">
             <ul class="answer">
             <% @quiz_Array.shuffle.each do |answer| %>

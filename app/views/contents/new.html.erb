@@ -1,7 +1,7 @@
 <div class="main posts-new">
   <div class="container">
     <h1 class="form-heading">投稿する</h1>
-    <%= form_for @quiz,:url => { :controller => :contents, :action => :created },multipart: true do |f| %>
+    <%= form_with @quiz, multipart: true do |f| %>
       <div class="form">
         <div class="form-body">
             <div class="form-error">

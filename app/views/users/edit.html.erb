@@ -9,7 +9,7 @@
           </div>
         <% end %>
       <img src="<%= "/user_images/#{@user.image_name}" %>" class="prof" width="100" height="100">
-        <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+        <%= form_tag url: { controller: :users, action: :update }, multipart: true do %>
           <p>ユーザー名</p>
           <input name="name" value="<%= @user.name %>">
           <p>画像</p>
