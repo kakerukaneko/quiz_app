@@ -1,33 +1,27 @@
-<div class="main posts-new">
-  <div class="container">
-    <h1 class="form-heading">投稿する</h1>
-    <%= form_with @quiz, multipart: true do |f| %>
-      <div class="form">
-        <div class="form-body">
-            <div class="form-error">
-              <%= @error_message %>
-            </div>
-            <%= f.label "Genre" %>
-            <%= f.collection_select :genre_id, Genre.all, :id, :name,:prompt => "ジャンル" %>
-            <br />
-            <%= f.label :content %>
-            <%= f.text_field :content, :placeholder => "例）〇〇は何でしょうか？" %>
-            <%= f.label :answer1, :class => "answer1" %>
-            <%= f.text_field :answer1, :placeholder => "ここに答えを書いてください！" %>
-            <%= f.label :answer2, :class => "answer2" %>
-            <%= f.text_field :answer2, :placeholder => "ここにハズレを書いてください・・" %>
-            <%= f.label :answer3, :class => "answer3" %>
-            <%= f.text_field :answer3, :placeholder => "ここにハズレを書いてください・・" %>
-            <%= f.label :answer4, :class => "answer4" %>
-            <%= f.text_field :answer4, :placeholder => "ここにハズレを書いてください・・" %>
-            <%= f.label "Commentary" %>
-            <%= f.text_area :quiz_comment, :placeholder => "例）正解は〇〇です！ 〇〇は700年程前に建築されたもので、現在では世界遺産となっている。" %>
-            <%= f.label "ファイルアップロード" %>
-      	    <%= f.file_field :content_picture %>
-            <%= f.hidden_field :quiz_addId, value: session[:user_id] %>
-            <%= f.submit "投稿する", class: "btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
+<%= form_with(model: @quiz, local: true) do |form| %>
+  <% if quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+
+      <ul>
+      <% quiz.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :quiz_title %>
   </div>
-</div>
+
+  <div class="field">
+    <%= form.label :memo %>
+    <%= form.text_area :memo, id: :quiz_memo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
