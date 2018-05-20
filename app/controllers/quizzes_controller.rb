@@ -1,4 +1,4 @@
-class ContentsController < ApplicationController
+class QuizzesController < ApplicationController
   before_action :set_question, only: [:index]
   before_action :set_genres
   
@@ -48,13 +48,11 @@ class ContentsController < ApplicationController
   
   def create
     @quiz = Quiz.new(question_params)
-    
     if params[:content_picture]
       @quiz.content_picture = "#{@quiz.id}.contentjpg"
       image = params[:content_picture]
       File.binwrite("public/content_images/#{@quiz.content_picture}", image.read)
     end
-    
     if @quiz.save
       flash[:notice] = "問題を投稿しました"
       redirect_to root_url

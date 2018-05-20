@@ -9,9 +9,10 @@ Rails.application.routes.draw do
     end
   end
   
-  resource :contents, only: [:new, :create] do
-    get 'index'
-    get 'answer'
-    get 'result'
+  resources :quizzes, only: [:index, :new, :create] do
+    collection do
+      get 'answer'
+      get 'result'
+    end
   end
 end
