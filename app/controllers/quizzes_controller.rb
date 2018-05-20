@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_action :set_question, only: [:index]
+  before_action :set_question, only: %i[ index ]
   before_action :set_genres
   
   def index
