@@ -9,9 +9,9 @@
         <%= @quiz_comment %>
         <br />
         <% if @result_count >= 10  && session[:user_id] || @result_count >= 5 && !session[:user_id]  %>
-          <%= link_to "結果発表へ", result_contents_path,class: "result" %>
+          <%= link_to "結果発表へ", result_quizzes_path,class: "result" %>
           <% else %>
-          <%= link_to "次の問題へ", contents_path,class: "next" %>
+          <%= link_to "次の問題へ", quizzes_path,class: "next" %>
           <% end %>
       </div>
     </div>

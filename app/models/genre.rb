@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :quiz
+  has_many :quizzes
 end

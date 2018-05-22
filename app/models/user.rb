@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :quiz
-  has_many :like
+  has_many :quizzes
+  has_many :likes
   
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   
