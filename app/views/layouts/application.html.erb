@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>QuizApp</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>QuizApp</title>
+  <%= csrf_meta_tags %>
 <!-- 'data-turbolinks-track': 'reload'  -->
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-    <%= render 'layouts/shim' %>
-  </head>
-
-  <body>
-      <%= render 'layouts/header' %>
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+  <%= render 'layouts/header' %>
+  <% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
+  <%= yield %>
+</body>
 </html>

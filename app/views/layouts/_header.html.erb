@@ -1,31 +1,39 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="conrainer" >
-      <%= link_to "Q", root_url, id: "logo" %>
-    </div>
-  <ul class="nav navbar-nav navbar-right">
-  <% if @current_user %> 
-    <li>
-       <img src="<%= "/user_images/#{@current_user.image_name}" %>" class="prof" width="50" height="50">
-    </li>
-    <li>
-      <%= link_to @current_user.name, user_path(@current_user.id) %>
-    </li>
-    <li>
-      <%= link_to "アカウント設定", edit_user_url(@current_user.id) %>
-    </li>
-    <li>
-      <%= link_to "ログアウト", logout_users_url, {method: :post} %>
-    </li>
-    <li>
-      <%= link_to "問題を作る", new_quiz_path %>
-    </li>
-  <% else %>
-  <li>
-    <%= link_to "新規登録", new_user_url %>
-  </li>
-  <li>
-    <%= link_to "ログイン", login_form_users_url %>
-  </li>
-  <% end %>
-   </ul>
+<header class="head-color">
+<div class="container">
+  <div class="container-small">
+    <%= link_to "FishQuiz", root_url, class: "headA" %>
+    <button type="button" class="headC">
+      <span class="fa fa-bars" title="MENU"></span>
+    </button>
+  </div>
+
+  <nav class="headB">
+    <ul>
+      <% if @current_user %>
+        <li>
+           <img src="<%= "/user_images/#{@current_user.image_name}" %>" class="prof" width="50" height="50">
+        </li>
+        <li>
+          <%= link_to @current_user.name, user_path(@current_user.id) %>
+        </li>
+        <li>
+          <%= link_to "アカウント設定", edit_user_url(@current_user.id) %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", logout_users_url, {method: :post} %>
+        </li>
+        <li>
+          <%= link_to "問題を作る", new_quiz_path %>
+        </li>
+      <% else %>
+      <li>
+        <%= link_to "新規登録", new_user_url %>
+      </li>
+      <li>
+        <%= link_to "ログイン", login_form_users_url %>
+      </li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
 </header>
