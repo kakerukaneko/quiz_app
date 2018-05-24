@@ -1,7 +1,5 @@
-$(document).ready( function() {
-  $(".top").onepage_scroll({
-    sectionContainer: "section",
-    responsiveFallback: 600,
-    loop: true
+$(function(){
+  $(".headC").click(function(){
+    $(".headB").slideToggle();
   });
 });
