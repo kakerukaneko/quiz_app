@@ -1,28 +1,14 @@
-<div class="main users-new">
-  <div class="container">
-    <div class="height"></div>
-    <div class="form users-form">
-      <div class="form-body">
-        <% @user.errors.full_messages.each do |message| %>
-          <div class="form-error">
-            <%= message %>
-          </div>
-        <% end %>
-        <div class="row">
-          <h1>Sign up</h1>
-        <div class="col-md-6 col-md-offset-3">
-        <%= form_tag users_path do %>
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @user.name %>">
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
-          <p>パスワード</p>
-          <input type="password" name="password">
-          <input type="submit" value="新規登録" class = "btn btn-primary">
-        <% end %>
-        </div>
-        </div>
+<div class="form">
+<%= form_with model: @user, local: true do |f| %>
+  <div class="form-body">
+      <div class="form-error">
+        <%= @error_message %>
       </div>
-    </div>
+      <%= f.text_field :name, placeholder: "ニックネーム" %>
+      <%= f.text_field :email, placeholder: "Eメール" %>
+      <%= f.password_field :password, placeholder: "パスワード" %>
+      <%= f.hidden_field :image_name, value: "default_user.jpg" %>
+      <%= f.submit "登録", class: "btn btn-primary" %>
   </div>
+<% end %>
 </div>
