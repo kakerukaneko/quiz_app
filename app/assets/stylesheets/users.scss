@@ -9,4 +9,18 @@
   text-align: center;
 }
 
-/* 新規登録: ヒーローイメージ*/
+/* フォーム */
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	min-height: 450px;
+	background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/kumanomi.jpg);
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+	color: var(--text-bright-color);
+	text-align: center;
+}

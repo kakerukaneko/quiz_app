@@ -159,19 +159,13 @@ header {
 	color: inherit;
 }
 
-/* フォーム */
+/* フォーム
 
-.height {
-  margin-top: 100px;
-}
 .form {
-  /*↓一時的にあった*/
-  padding-top: 100px;
   max-width: 600px;
   margin: 0 auto;
   background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
-
 }
 
 .form-heading {
@@ -225,6 +219,8 @@ header {
   display: table;
   clear: both;
 }
+
+*/
 
 /* users/show ================================ */
 .user-show {
