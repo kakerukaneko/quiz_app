@@ -1,12 +1,12 @@
 <div class="form">
 <%= form_with url: login_users_url, local: true do |f| %>
   <div class="form-body">
-      <div class="form-error">
-        <%= @error_message %>
-      </div>
-      <%= f.text_field :email, placeholder: "Eメール" %>
-      <%= f.password_field :password, placeholder: "パスワード" %>
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <%= f.text_field :email, placeholder: "Eメール" %><br>
+    <%= f.password_field :password, placeholder: "パスワード" %><br>
+    <div class="form-error">
+      <%= @error_message %>
+    </div>
+    <%= f.submit "ログイン", class: "btn btn-primary" %>
   </div>
 <% end %>
 </div>

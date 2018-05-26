@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       flash[:notice] = "ユーザー登録が完了しました"
       redirect_to @user
     else
-      #@error_message = "じぇ！エラーが出てます。"
       render :new
     end
   end
@@ -31,7 +30,7 @@ class UsersController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to @user
     else
-      @error_message = "メールアドレスまたはパスワードが間違っています"
+      @error_message = "じぇ! 間違ってるみたいです。"
       @email = params[:email]
       @password = params[:password]
       render :login_form
