@@ -14,7 +14,19 @@
 }
 
 /* コンテンツA: ヒーローイメージ*/
-
+.conA {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	min-height: 450px;
+	background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(/discus.jpg);
+	background-position: center;
+	background-size: cover;
+	color: #fff;
+	color: var(--text-bright-color);
+	text-align: center;
+}
 
 .conA.compact {
 	height: 450px;
