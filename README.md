@@ -1,4 +1,4 @@
-3min Culture Quiz
+Fish Quiz
 ====
 
 ３分かからず問題を解く事が出来るクイズアプリケーション  
